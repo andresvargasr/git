@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<featureModel chosenLayoutAlgorithm="4">
+		<struct>
+			<and abstract="true" mandatory="true" name="Inmobiliaria">
+				<and name="Gestión de Capital">
+					<and name="Estructurar Fondo">
+						<and mandatory="true" name="Inversiones">
+							<alt name="Alternativas">
+								<feature mandatory="true" name="Vehiculos"/>
+								<feature mandatory="true" name="Seguros"/>
+								<feature mandatory="true" name="Capital Privsado"/>
+								<feature mandatory="true" name="Cartera colectiva"/>
+							</alt>
+							<feature mandatory="true" name="Traddicionales"/>
+						</and>
+						<alt mandatory="true" name="Alta Segmentación">
+							<feature mandatory="true" name="Relaciones con Inversores"/>
+							<feature mandatory="true" name="Definicion Gobierno Corporativo"/>
+						</alt>
+						<feature mandatory="true" name="Adquisiciones"/>
+						<feature mandatory="true" name="Venta activos"/>
+					</and>
+				</and>
+				<and mandatory="true" name="Gestión Activos">
+					<feature mandatory="true" name="Adquisición"/>
+					<feature mandatory="true" name="Gestión de Inmobiliaria"/>
+					<feature mandatory="true" name="Alquiler"/>
+					<or mandatory="true" name="Reporting">
+						<feature mandatory="true" name="Operativo"/>
+						<feature mandatory="true" name="Financiero"/>
+					</or>
+					<feature name="Valoraciones"/>
+					<feature name="Auditorías"/>
+					<feature name="Revisiones de Mercado"/>
+					<feature name="Contabilidad"/>
+					<feature name="Refinanciaciones"/>
+					<feature name="Ventas de Activos"/>
+				</and>
+				<and mandatory="true" name="Gestión Inmobiliaria">
+					<feature name="Gestión del Equipamento"/>
+					<feature name="Instalaciones"/>
+					<feature name="Activos Físicos"/>
+					<and name="Tasación">
+						<feature name="Captacion de la propiedad"/>
+					</and>
+					<and name="Reservas">
+						<feature name="Control de Reservas"/>
+						<feature name="Aceptación Propietario"/>
+						<feature name="Vigencia de la reserva"/>
+						<feature name="Fecha Ecritura"/>
+					</and>
+					<feature name="Recursos Hunanos"/>
+					<feature name="Sistemas"/>
+					<feature name="Procesos"/>
+				</and>
+			</and>
+		</struct>
+		<constraints>
+			<rule>
+				<imp>
+					<var>Valoraciones</var>
+					<var>Auditorías</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Contabilidad</var>
+					<var>Ventas de Activos</var>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Gestión del Equipamento</var>
+					<not>
+						<var>Activos Físicos</var>
+					</not>
+				</imp>
+			</rule>
+			<rule>
+				<imp>
+					<var>Activos Físicos</var>
+					<not>
+						<var>Instalaciones</var>
+					</not>
+				</imp>
+			</rule>
+		</constraints>
+		<calculations Auto="true" Constraints="true" Features="true" Redundant="true" Tautology="true"/>
+		<comments/>
+		<featureOrder userDefined="false"/>
+	</featureModel>
